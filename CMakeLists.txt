@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.10)
 
 set(CMAKE_CXX_STANDARD 17)
 
-project(ZetaWatchQt)
+project(ZetaWatch)
 
 ################################################################################
 # Settings
@@ -26,6 +26,10 @@ find_package(Qt5 REQUIRED COMPONENTS Gui Widgets)
 ################################################################################
 
 set(ZETA_WATCH_SOURCES
+	src/FormatHelpers.cpp
+	src/FormatHelpers.hpp
+	src/MenuGenerator.cpp
+	src/MenuGenerator.hpp
 	src/main.cpp
 )
 
@@ -39,8 +43,8 @@ target_link_libraries(${PROJECT_NAME}
 )
 
 target_include_directories(${PROJECT_NAME}
-	PUBLIC
-		$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+	PRIVATE
+		$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/src>
 )
 
 target_compile_options(${PROJECT_NAME} PRIVATE
